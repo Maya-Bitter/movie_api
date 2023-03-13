@@ -1,4 +1,10 @@
-const url = require('url'); 
+const http = require('http'),
+  fs = require('fs'),
+  url = require('url');
+
+  // variable declarations at the top. This is a great shortcut to quickly set up multiple variables at once.//
+
+// const url = require('url'); 
 
 // The first line of the code requires the module (which is necessary no matter which module you’re using) //
 
@@ -21,7 +27,7 @@ console.log(q.search); // returns '?year=2017&month=february'
 let qdata = q.query; // returns an object: { year: 2017, month: 'february' }
 console.log(qdata.month); // returns 'february'
 
-const http = require('http');
+// const http = require('http'); 
 
 http.createServer((request, response) => {
   response.writeHead(200, {'Content-Type': 'text/plain'});
