@@ -21,23 +21,6 @@ console.log(q.search); // returns '?year=2017&month=february'
 let qdata = q.query; // returns an object: { year: 2017, month: 'february' }
 console.log(qdata.month); // returns 'february'
 
-if (q.pathname.includes('documentation')) {
-    filePath = (__dirname + '/documentation.html');
-    } else {
-    filePath = 'index.html';
-    }
-    
-    fs.readFile(filePath, (err, data) => {
-    if (err) {
-    throw err;
-    }
-    
-    response.writeHead(200, { 'Content-Type': 'text/html' });
-    response.write(data);
-    response.end();
-    
-    });
-
 const http = require('http');
 
 http.createServer((request, response) => {
