@@ -1,0 +1,36 @@
+URL: /
+Timestamp: Mon Mar 13 2023 13:30:41 GMT+0100 (Central European Standard Time)
+
+URL: /script.js
+Timestamp: Mon Mar 13 2023 13:30:41 GMT+0100 (Central European Standard Time)
+
+URL: /style.css
+Timestamp: Mon Mar 13 2023 13:30:41 GMT+0100 (Central European Standard Time)
+
+URL: /favicon.ico
+Timestamp: Mon Mar 13 2023 13:30:41 GMT+0100 (Central European Standard Time)
+
+URL: /documantation
+Timestamp: Mon Mar 13 2023 13:31:02 GMT+0100 (Central European Standard Time)
+
+URL: /script.js
+Timestamp: Mon Mar 13 2023 13:31:02 GMT+0100 (Central European Standard Time)
+
+URL: /style.css
+Timestamp: Mon Mar 13 2023 13:31:02 GMT+0100 (Central European Standard Time)
+
+URL: /favicon.ico
+Timestamp: Mon Mar 13 2023 13:31:03 GMT+0100 (Central European Standard Time)
+
+URL: /documentation
+Timestamp: Mon Mar 13 2023 13:31:05 GMT+0100 (Central European Standard Time)
+
+URL: /style.css
+Timestamp: Mon Mar 13 2023 13:31:05 GMT+0100 (Central European Standard Time)
+
+URL: /script.js
+Timestamp: Mon Mar 13 2023 13:31:05 GMT+0100 (Central European Standard Time)
+
+URL: /favicon.ico
+Timestamp: Mon Mar 13 2023 13:31:07 GMT+0100 (Central European Standard Time)
+
