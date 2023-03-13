@@ -2,7 +2,7 @@ const http = require('http'),
   fs = require('fs'),
   url = require('url');
 
-  // added variable  declarations at the top. //
+  // added variable declarations at the top. //
   
 http.createServer((request, response) => { // server creation. The module is being used here to create a new server //
   let addr = request.url, // a new variable has been declared, which has been assigned the function. Remember from above that using allows you to get the URL from the request (which, in this case, is the first argument of the function:  //
