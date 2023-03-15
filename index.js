@@ -1,2 +1,2 @@
-const express = require('express');
-const app = express();
+const express = require('express'); // imports the express module locally so it can be used within the file //
+const app = express(); //  declares a variable that encapsulates Express’s functionality to configure my web server //
