@@ -100,7 +100,7 @@ url: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/323BP0itpxTsO0skTwdnVm
 
 // GET requests
 app.get('/', (req, res) => {
-  res.send('Welcome to my book club!');
+  res.send('Welcome to my top 10 movies page!');
 });
 
 app.get('/documentation', (req, res) => {                  
