@@ -1,6 +1,11 @@
+
 const express = require('express'); // imports the express module locally so it can be used within the file //
-const app = express(); //  declares a variable that encapsulates Express’s functionality to configure my web server //
 morgan = require('morgan'); // Morgan is imported locally //
+
+const app = express(); //  declares a variable that encapsulates Express’s functionality to configure my web server //
+
+app.use(morgan('common')); // passed into the function: //
+ 
 app.use('/documentation', express.static('public')); // added the express.static to serve your “documentation.html” file from the public folder 
 
 // simplifies the Node.js syntax. Rather than importing and using modules, you could, instead, use the following (much simpler) code to do the trick:
@@ -111,6 +116,10 @@ app.get('/documentation', (req, res) => {
 
 app.get('/movies', (req, res) => {
   res.json(topMovies);
+});
+
+app.get('/secreturl', (req, res) => {
+  res.send('This is a secret url with super top-secret content.'); // morgan
 });
 
 // listen for requests
