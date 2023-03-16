@@ -1,6 +1,20 @@
 
 const express = require('express'); // imports the express module locally so it can be used within the file //
 morgan = require('morgan'); // Morgan is imported locally //
+bodyParser = require('body-parser'), // “error-handling” middleware functions
+methodOverride = require('method-override');
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+app.use(bodyParser.json());
+app.use(methodOverride());
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
 
 const app = express(); //  declares a variable that encapsulates Express’s functionality to configure my web server //
 
