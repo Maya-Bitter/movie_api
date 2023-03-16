@@ -1,8 +1,10 @@
 
-const express = require('express'); // imports the express module locally so it can be used within the file //
-morgan = require('morgan'); // Morgan is imported locally //
-bodyParser = require('body-parser'), // “error-handling” middleware functions
-methodOverride = require('method-override');
+const express = require('express'), // imports the express module locally so it can be used within the file //
+  morgan = require('morgan'); // Morgan is imported locally //
+
+const app = express(); //  declares a variable that encapsulates Express’s functionality to configure my web server //
+const bodyParser = require('body-parser'), // “error-handling” middleware functions
+  methodOverride = require('method-override');
 
 app.use(bodyParser.urlencoded({
   extended: true
@@ -16,13 +18,23 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something broke!');
 });
 
-const app = express(); //  declares a variable that encapsulates Express’s functionality to configure my web server //
-
 app.use(morgan('common')); // passed into the function: //
  
 app.use('/documentation', express.static('public')); // added the express.static to serve your “documentation.html” file from the public folder 
 
 // simplifies the Node.js syntax. Rather than importing and using modules, you could, instead, use the following (much simpler) code to do the trick:
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+app.use(bodyParser.json());
+app.use(methodOverride());
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
 
 let topMovies = [
 
