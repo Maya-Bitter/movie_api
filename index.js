@@ -1,6 +1,6 @@
 const express = require('express'); // imports the express module locally so it can be used within the file //
 const app = express(); //  declares a variable that encapsulates Express’s functionality to configure my web server //
-
+morgan = require('morgan'); // Morgan is imported locally //
 app.use('/documentation', express.static('public')); // added the express.static to serve your “documentation.html” file from the public folder 
 
 // simplifies the Node.js syntax. Rather than importing and using modules, you could, instead, use the following (much simpler) code to do the trick:
