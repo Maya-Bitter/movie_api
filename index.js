@@ -6,25 +6,17 @@ const app = express(); //  declares a variable that encapsulates Express’s fun
 const bodyParser = require('body-parser'), // “error-handling” middleware functions
   methodOverride = require('method-override');
 
+app.use(morgan('common')); // passed into the function: //
+
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.use(bodyParser.json());
-app.use(methodOverride());
-
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-});
-
-app.use(morgan('common')); // passed into the function: //
- 
 app.use('/documentation', express.static('public')); // added the express.static to serve your “documentation.html” file from the public folder 
 
 // simplifies the Node.js syntax. Rather than importing and using modules, you could, instead, use the following (much simpler) code to do the trick:
 
-app.use(bodyParser.urlencoded({
+app.use(bodyParser.urlencoded({ // Error-handling middleware should always be defined last in a chain of middleware, after all other instances of and route calls (e.g., after , , etc.) but before , for example:err.stackerrorapp.use()app.get()app.post()app.listen() //
   extended: true
 }));
 
