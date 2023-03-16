@@ -8,10 +8,6 @@ const bodyParser = require('body-parser'), // “error-handling” middleware fu
 
 app.use(morgan('common')); // passed into the function: //
 
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-
 app.use('/documentation', express.static('public')); // added the express.static to serve your “documentation.html” file from the public folder 
 
 // simplifies the Node.js syntax. Rather than importing and using modules, you could, instead, use the following (much simpler) code to do the trick:
