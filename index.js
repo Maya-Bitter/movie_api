@@ -8,8 +8,6 @@ const bodyParser = require('body-parser'), // “error-handling” middleware fu
 
 app.use(morgan('common')); // passed into the function: //
 
-app.use('/documentation', express.static('public')); // added the express.static to serve your “documentation.html” file from the public folder 
-
 // simplifies the Node.js syntax. Rather than importing and using modules, you could, instead, use the following (much simpler) code to do the trick:
 
 app.use(bodyParser.urlencoded({ // Error-handling middleware should always be defined last in a chain of middleware, after all other instances of and route calls (e.g., after , , etc.) but before , for example:err.stackerrorapp.use()app.get()app.post()app.listen() //
@@ -124,7 +122,7 @@ app.get('/', (req, res) => {
   res.send('Welcome to my top 10 movies page!');
 });
 
-app.get('/documentation', (req, res) => {                  
+app.get('/documentation.html', (req, res) => {                  
   res.sendFile('public/documentation.html', { root: __dirname });
 });
 
