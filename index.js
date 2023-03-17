@@ -234,6 +234,23 @@ app.get('/movies/directors/:directorName', (req, res) => {
 
   });
 
+  // Allow new users to register //
+
+  // POST //
+
+app.post('/users', (req, res) => {
+const newUser = req.body;
+
+  if(newUser.name) {
+  newUser.id = uuid.v4();
+  users.push(newUser);
+  res.status(201).json(newUser)
+  } else {
+  res.status(400).send('users need names')
+}
+
+});
+
 
 
    
