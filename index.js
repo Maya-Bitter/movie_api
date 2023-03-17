@@ -17,7 +17,7 @@ favouriteMovies: ["Plane"]
 { 
 id: 2,
 name: "Joe",
-favouriteMovies: ["Scream VI" ]
+favouriteMovies: ["Scream VI"]
 }
 
 ]
