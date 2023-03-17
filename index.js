@@ -12,14 +12,14 @@ let users = [
 id: 1,
 name: "Alexander",
 favouriteMovies: ["Plane"]
-
 },
 
-{ id: 2,
-  name: "Joe",
-  favouriteMovies: ["Scream VI" ]
-
+{ 
+id: 2,
+name: "Joe",
+favouriteMovies: ["Scream VI" ]
 }
+
 ]
 
 let movies = [
