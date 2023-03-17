@@ -167,12 +167,47 @@ Featured: false
   
 ];
 
-    // Gets the list of data about ALL movies 
+// Gets the list of data about ALL movies 
+
+// READ //
 
 app.get('/movies', (req, res) => {
   res.json(movies);
 });
 
+// Gets data (description, genre, director, image URL, about a single movie by title to the movie //
+
+// READ //
+
+app.get('/movies/:title', (req, res) => {
+  const { title } = req.params;
+  const movie = movies.find( movie => movie.Title === title );
+
+  if (movie) {
+    res.status(200).json(movie);
+   } else { 
+    res.status(400).send('no such movie')
+   }
+
+  });
+
+  // Gets data about a genre (description) by name/title //
+
+  // READ //
+
+  app.get('/movies/genre/:genreName', (req, res) => {
+    const { genreName } = req.params;
+    const genre = movies.find( movie => movie.genreName === genreName ).Genre;
+  
+    if (genre) {
+      res.status(200).json(genre);
+     } else { 
+      res.status(400).send('no such genre')
+     }
+  
+    });
+
+   
 app.listen(8080, () => {
   console.log('Your app is listening on port 8080');
 });
