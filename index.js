@@ -1,140 +1,178 @@
+const express = require('express'),
+  bodyParser = require('body-parser'),
+  uuid = require('uuid');
 
-const express = require('express'), // imports the express module locally so it can be used within the file //
-  morgan = require('morgan'); // Morgan is imported locally //
-
-const app = express(); //  declares a variable that encapsulates Express’s functionality to configure my web server //
-const bodyParser = require('body-parser'), // “error-handling” middleware functions
-  methodOverride = require('method-override');
-
-app.use(morgan('common')); // passed into the function: //
-
-// simplifies the Node.js syntax. Rather than importing and using modules, you could, instead, use the following (much simpler) code to do the trick:
-
-app.use(bodyParser.urlencoded({ // Error-handling middleware should always be defined last in a chain of middleware, after all other instances of and route calls (e.g., after , , etc.) but before , for example:err.stackerrorapp.use()app.get()app.post()app.listen() //
-  extended: true
-}));
+const app = express();
 
 app.use(bodyParser.json());
-app.use(methodOverride());
 
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-});
+let users = [
 
-let topMovies = [
+
+]
+
+let movies = [
 
 {
-title: 'Luther: The Fallen Sun',
-year: '2023',
-time: '2h 9m', 
-genre: 'Thriller, Crime, Action, Drama',
-overview: 'A dark psychological crime drama starring Idris Elba as Luther, a man struggling with his own terrible demons, who might be as dangerous as the depraved murderers he hunts.',
-url: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/xsW7M4b4gawgFKCzcXHL2MSeswj.jpg'
+"Title": "Luther: The Fallen Sun",
+"Description": "A dark psychological crime drama starring Idris Elba as Luther, a man struggling with his own terrible demons, who might be as dangerous as the depraved murderers he hunts.",
+
+"Genre": {
+"Name": "Thriller",
+"Description": "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that evokes excitement and suspense in the audience.[1] The suspense element found in most films' plots is particularly exploited by the filmmaker in this genre. Tension is created by delaying what the audience sees as inevitable, and is built through situations that are menacing or where escape seems impossible."
+},
+
+"Director": {
+"Name": "Jamie Payne",
+"Bio": "Jamie Payne is an English film director, entered the film industry with his debut The Dance of Shiva. After that, he mainly directed British television series. For The Hour he received the award for Best International Television Series at the Geneva Film Festival in 2011. In 2013 he directed two episodes of the British cult series Doctor Who and the following year he began directing his first American series with Legends. At the same time, he was also a producer. Finally, he produced four episodes for the television series Luther in 2019 and directed the spinoff Luther: The Fallen Sun in 2023. According to his own statements, he was glad that he had more time for shooting than with the series. He also praised the efforts of lead actor Idris Elba.",
+"Birth": "1968",
+},
+
+ImageUrl: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/xsW7M4b4gawgFKCzcXHL2MSeswj.jpg",
+Featured: false
 },
 
 {
-title: 'Plane',
-year: '2023',
-time: '1h 47m', 
-genre: 'Action, Adventure, Thriller',
-overview: 'After a heroic job of successfully landing his storm-damaged aircraft in a war zone, a fearless pilot finds himself between the agendas of multiple militias planning to take the plane and its passengers hostage.',
-url: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qi9r5xBgcc9KTxlOLjssEbDgO0J.jpg'
+"Title": "Plane",
+"Description": "After a heroic job of successfully landing his storm-damaged aircraft in a war zone, a fearless pilot finds himself between the agendas of multiple militias planning to take the plane and its passengers hostage.",
+
+"Genre": {
+"Name": "Action",
+"Description": "Film genre in which the protagonist is thrust into a series of events that typically involve violence and physical feats. The genre tends to feature a mostly resourceful hero struggling against incredible odds, which include life-threatening situations, a dangerous villain, or a pursuit which usually concludes in victory for the hero.",
 },
-    
-{
-title: 'Forrest Gump',
-year: '1994',
-time: '2h 22m', 
-genre: 'Comedy, Drama, Romance',
-overview: 'A man with a low IQ has accomplished great things in his life and been present during significant historic events—in each case, far exceeding what 	anyone imagined he could do. But despite all he has achieved, his one true love eludes him.',
-url: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg'
+
+"Director": {
+"Name": "Jean-Francois Richet",
+"Bio": "Jean-Francois Richet is a French screenwriter, director, and producer, born on July 2, 1966 in Paris. He grew up in Meaux, a suburb east of Paris.",
+"Birth": "1966",
+},
+
+ImageUrl: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qi9r5xBgcc9KTxlOLjssEbDgO0J.jpg",
+Featured: false
 },
 
 {
-title: 'Pulp Fiction',
-year: '1994',
-time: '2h 34m',
-genre: 'Thriller, Crime', 
-overview: 'A burger-loving hit man, his philosophical partner, a drug-addled gangste\'s moll and a washed-up boxer converge in this sprawling, comedic crime caper. Their adventures unfurl in three stories that ingeniously trip back and forth in time.',
-url: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg'
+"Title": "Pulp Fiction",
+"Description": "A burger-loving hit man, his philosophical partner, a drug-addled gangste\'s moll and a washed-up boxer converge in this sprawling, comedic crime caper. Their adventures unfurl in three stories that ingeniously trip back and forth in time.",
+
+"Genre": {
+"Name": "Thriller",
+"Description": "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that evokes excitement and suspense in the audience.[1] The suspense element found in most films' plots is particularly exploited by the filmmaker in this genre. Tension is created by delaying what the audience sees as inevitable, and is built through situations that are menacing or where escape seems impossible."
+},
+
+"Director": {
+"Name": "Quentin Jerome Tarantino",
+"Bio": "Quentin Jerome Tarantino is an American film director, screenwriter, producer, cinematographer and actor. In the early 1990s he was an independent filmmaker whose films used nonlinear storylines and aestheticization of violence. His films have earned him a variety of Academy Award, Golden Globe, BAFTA and Palme d'Or Awards and he has been nominated for Emmy and Grammy Awards. In 2007, Total Film named him the 12th-greatest director of all time.",
+"Birth": "1963",
+},
+
+ImageUrl: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg",
+Featured: false
 },
 
 { 
-title: 'Schindler\'s  List',
-year: '1993',
-time: '3h 15m',
-genre: 'Drama, History, War', 
-overview: 'The true story of how businessman Oskar Schindler saved over a thousand Jewish lives from the Nazis while they worked as slaves in his factory during World War II.',
-url: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg'
+"Title": "Forrest Gump",
+"Description": "A man with a low IQ has accomplished great things in his life and been present during significant historic events—in each case, far exceeding what anyone imagined he could do. But despite all he has achieved, his one true love eludes him",
+
+"Genre": {
+"Name": "Drama",
+"Description": "Drama is a category or genre of narrative fiction (or semi-fiction) intended to be more serious than humorous in tone. Drama of this kind is usually qualified with additional terms that specify its particular super-genre, macro-genre, or micro-genre,[2] such as soap opera, police crime drama, political drama, legal drama, historical drama, domestic drama, teen drama, and comedy-drama (dramedy)."
 },
 
-{  
-title: 'Pretty Woman',
-year: '1990',
-time: '1h 59m',
-genre: 'Comedy, Romance', 
-overview: 'When a millionaire wheeler-dealer enters a business contract with a Hollywood hooker Vivian Ward, he loses his heart in the bargain.',
-url: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/hVHUfT801LQATGd26VPzhorIYza.jpg'
+"Director": {
+"Name": "Robert Lee Zemeckis",
+"Bio": "Robert Lee Zemeckis is an American film director, producer and screenwriter. Zemeckis first came to public attention in the 1980s as the director of the comedic time-travel Back to the Future film series, as well as the Academy Award-winning live-action/animation epic Who Framed Roger Rabbit (1988), though in the 1990s he diversified into more dramatic fare, including 1994's Forrest Gump, for which he won an Academy Award for Best Director.",
+"Birth": "1951",
+},
 
+ImageUrl: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg",
+Featured: false
 },
 
 { 
-title: 'Scream VI',
-year: '2023',
-time: ' 2h 3m', 
-genre: 'Horror, Mystery, Thriller', 
-overview: 'Following the latest Ghostface killings, the four survivors leave Woodsboro behind and start a fresh chapter.',
-url: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/aePBN8ffLCHoUXp8lkA5P29CXdx.jpg'
+"Title": "Scream VI",
+"Description": "Following the latest Ghostface killings, the four survivors leave Woodsboro behind and start a fresh chapter",
+
+"Genre": {
+"Name": "Horror",
+"Description": "Horror is a film genre that seeks to elicit fear or disgust in its audience for entertainment purposes. Horror films often explore dark subject matter and may deal with transgressive topics or themes. Broad elements include monsters, apocalyptic events, and religious or folk beliefs. Cinematic techniques used in horror films have been shown to provoke psychological reactions in an audience."
 },
 
-{   
-title: 'Fight Club',
-year: '1999',
-time: '2h 19m',
-genre: 'Drama, Thriller, Comedy',
-overview: 'A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground "fight clubs" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.',
-url: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg'
+"Director": {
+"Name": "Matt Bettinelli-Olpin",
+"Bio": "Matt Bettinelli-Olpin is an American director, writer, actor and musician.", 
+"Birth": "1978"
 },
-    
-{   
-title: 'The Silence of the Lambs',
-year: '1991',
-time: '1h 59m',
-genre: 'Crime, Drama, Thriller', 
-overview: 'Clarice Starling is a top student at the FBI\'s training academy. Jack Crawford wants Clarice to interview Dr. Hannibal Lecter, a brilliant psychiatrist who is also a violent psychopath, serving life behind bars for various acts of murder and cannibalism. Crawford believes that Lecter may have insight into a case and that Starling, as an attractive young woman, may be just the bait to draw him out.',
-url: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/rplLJ2hPcOQmkFhTqUte0MkEaO2.jpg'
+
+ImageUrl: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/aePBN8ffLCHoUXp8lkA5P29CXdx.jpg",
+Featured: false
 },
-   
+
 { 
-title: 'The Intouchables',
-year: '2011',
-time: '1h 53m',
-genre: 'Drama, Comedy', 
-overview: '1h 53m',
-url: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/323BP0itpxTsO0skTwdnVmf7YC9.jpg'
+"Title": "Schindler\'s List",
+"Description": "The true story of how businessman Oskar Schindler saved over a thousand Jewish lives from the Nazis while they worked as slaves in his factory during World War II.",
+
+"Genre": {
+"Name": "Drama",
+"Description": "Drama is a category or genre of narrative fiction (or semi-fiction) intended to be more serious than humorous in tone. Drama of this kind is usually qualified with additional terms that specify its particular super-genre, macro-genre, or micro-genre,[2] such as soap opera, police crime drama, political drama, legal drama, historical drama, domestic drama, teen drama, and comedy-drama (dramedy)."
 },
 
+"Director": {
+"Name": "Steven Allan Spielberg",
+"Bio": "Steven Allan Spielberg is an American film director, writer and producer. A major figure of the New Hollywood era and pioneer of the modern blockbuster, he is the most commercially successful director of all time. Spielberg is the recipient of various accolades, including three Academy Awards, a Kennedy Center honor, four Directors Guild of America Awards, two BAFTA Awards, a Cecil B. DeMille Award and an AFI Life Achievement Award. Seven of his films have been inducted into the National Film Registry by the Library of Congress as 'culturally, historically or aesthetically significant'.",
+"Birth": "1946",
+},
+
+ImageUrl: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg",
+Featured: false
+},
+
+{ 
+"Title": "Fight Club",
+"Description": "A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground 'fight clubs' forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.",
+
+"Genre": {
+"Name": "Drama",
+"Description": "Drama is a category or genre of narrative fiction (or semi-fiction) intended to be more serious than humorous in tone. Drama of this kind is usually qualified with additional terms that specify its particular super-genre, macro-genre, or micro-genre,such as soap opera, police crime drama, political drama, legal drama, historical drama, domestic drama, teen drama, and comedy-drama (dramedy)."
+},
+
+"Director": {
+"Name": "David Andrew Leo Fincher",
+"Bio": "David Andrew Leo Fincher is an American film director. His films, mostly psychological thrillers and biographical dramas, have received 40 nominations at the Academy Awards, including three for him as Best Director. Born in Denver, Colorado, Fincher was interested in filmmaking at an early age. He directed numerous music videos, most notably Madonna/'s 'Express Yourself' in 1989 and 'Vogue' in 1990, both of which won him the MTV Video Music Award for Best Direction. He made his feature film debut with Alien 3 (1992), which garnered mixed reviews, followed by the thriller Seven (1995), which was better received. Fincher found lukewarm success with The Game (1997) and Fight Club (1999), but the latter eventually became a cult classic. In 2002, he returned to prominence with the thriller Panic Room starring Jodie Foster.",
+"Birth": "1962",
+},
+
+ImageUrl: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg",
+Featured: false
+},
+
+{ 
+"Title": "Marriage Story",
+"Description": "A stage director and an actress struggle through a grueling, coast-to-coast divorce that pushes them to their personal extremes.",
+
+"Genre": {
+"Name": "Drama",
+"Description": "Drama is a category or genre of narrative fiction (or semi-fiction) intended to be more serious than humorous in tone. Drama of this kind is usually qualified with additional terms that specify its particular super-genre, macro-genre, or micro-genre,[2] such as soap opera, police crime drama, political drama, legal drama, historical drama, domestic drama, teen drama, and comedy-drama (dramedy)."
+},
+
+"Director": {
+"Name": "Noah Baumbach", 
+"Bio": "Noah Baumbach is an American filmmaker. He received Academy Award nominations for writing his films The Squid and the Whale (2005) and Marriage Story (2019), both of which he also directed, while the former garnered him one of the few screenwriters to ever sweep 'The Big Four' critics awards: Los Angeles Film Critics Association, National Board of Review, New York Film Critics Circle, and National Society of Film Critics.", 
+"Birth": "1969",
+},
+
+ImageUrl: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/2JRyCKaRKyJAVpsIHeLvPw5nHmw.jpg",
+Featured: false
+},
+  
 ];
 
-// GET requests
-app.get('/', (req, res) => {
-  res.send('Welcome to my top 10 movies page!');
-});
-
-app.get('/documentation.html', (req, res) => {                  
-  res.sendFile('public/documentation.html', { root: __dirname });
-});
+    // Gets the list of data about ALL movies 
 
 app.get('/movies', (req, res) => {
-  res.json(topMovies);
+  res.json(movies);
 });
 
-app.get('/secreturl', (req, res) => {
-  res.send('This is a secret url with super top-secret content.'); // morgan
-});
-
-// listen for requests
 app.listen(8080, () => {
-  console.log('Your app is listening on port 8080.');
+  console.log('Your app is listening on port 8080');
 });
