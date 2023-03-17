@@ -8,7 +8,18 @@ app.use(bodyParser.json());
 
 let users = [
 
+{
+id: 1,
+name: "Alexander",
+favouriteMovies: ["Plane"]
 
+},
+
+{ id: 2,
+  name: "Joe",
+  favouriteMovies: ["Scream VI" ]
+
+}
 ]
 
 let movies = [
@@ -222,6 +233,8 @@ app.get('/movies/directors/:directorName', (req, res) => {
     }
 
   });
+
+
 
    
 app.listen(8080, () => {
