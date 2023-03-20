@@ -147,7 +147,15 @@ favouriteMovies: [ ]<br>
 <td>Allow users to add a movie to their list of favorites<br>(showing only a text that a movie has been added)</td>
 <td>/users/[id]/[movieTitle]</td>
 <td>POST</td>
-<td></td>
+<td>A JSON object holding data about the fabourite movie the user has added, structured like:
+{<br>
+"id": 1,<br>
+"name": "Alexander",<br>
+"favouriteMovies": [<br>
+    "Fight Club"<br>
+]<br>
+}
+</td>
 <td></td>
 </tr>
 
