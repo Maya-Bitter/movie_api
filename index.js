@@ -18,7 +18,7 @@ favouriteMovies: ["Plane"]
 id: 2,
 name: "Joe",
 favouriteMovies: ["Scream VI"]
-}
+},
 
 ]
 
@@ -236,7 +236,7 @@ app.get('/movies/directors/:directorName', (req, res) => {
 
   // Allow new users to register //
 
-  // POST //
+  // CREATE //
 
 app.post('/users', (req, res) => {
 const newUser = req.body;
@@ -249,7 +249,31 @@ const newUser = req.body;
   res.status(400).send('users need names')
 }
 
-});
+})
+
+// Allow  users to update their username //
+
+// UPDATE //
+
+app.put('/users/:id', (req, res) => {
+  const { id } = req.params;
+  const updatedUser = req.body;
+
+  let user  = users.find(user => user.id == id);
+
+  if (user) {
+    user.name= updatedUser.name;
+    res.status(200).json(user);
+  } else {
+    res.status(400).send('no such user')
+  }
+  
+     
+  });
+
+
+
+
 
    
 app.listen(8080, () => {
