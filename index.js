@@ -1,10 +1,13 @@
 const express = require('express'),
   bodyParser = require('body-parser'),
   uuid = require('uuid');
+  morgan = require('morgan'); // Morgan is imported locally //
+  methodOverride = require('method-override');
 
 const app = express();
 
 app.use(bodyParser.json());
+
 
 let users = [
 
@@ -323,7 +326,11 @@ app.delete('/users/:id/', (req, res) => {
   }
      
   })
-    
+  
+  app.get('/documentation.html', (req, res) => {                  
+  res.sendFile('public/documentation.html', { root: __dirname });
+});
+   
 app.listen(8080, () => {
   console.log('Your app is listening on port 8080');
 });
