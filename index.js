@@ -11,7 +11,7 @@ let users = [
 {
 id: 1,
 name: "Alexander",
-favouriteMovies: ["Plane"]
+favouriteMovies: []
 },
 
 { 
@@ -184,7 +184,7 @@ Featured: false
 
 app.get('/movies', (req, res) => {
   res.json(movies);
-});
+})
 
 // Gets data (description, genre, director, image URL, about a single movie by title to the movie //
 
@@ -200,7 +200,7 @@ app.get('/movies/:title', (req, res) => {
     res.status(400).send('no such movie')
    }
 
-  });
+  })
 
   // Gets data about a genre (description) by name/title //
 
@@ -216,7 +216,7 @@ app.get('/movies/genre/:genreName', (req, res) => {
     res.status(400).send('no such genre')
     }
 
-  });
+  })
 
   // Gets data about a director (bio, birth year, death year) by name //
 
@@ -232,7 +232,7 @@ app.get('/movies/directors/:directorName', (req, res) => {
     res.status(400).send('no such director')
     }
 
-  });
+  })
 
   // Allow new users to register //
 
@@ -267,15 +267,28 @@ app.put('/users/:id', (req, res) => {
   } else {
     res.status(400).send('no such user')
   }
+
+})
   
+// Allow users to add a movie to their list of favorites //
+
+// create //
+
+app.post('/users/:id/:movieTitle', (req, res) => {
+  const { id, movieTitle } = req.params;
+ 
+  let user  = users.find(user => user.id == id);
+
+  if (user) {
+    user.favouriteMovies.push(movieTitle);
+    res.status(200).json(user);
+  } else {
+    res.status(400).send('no such user')
+  }
      
-  });
-
-
-
-
-
+  })
    
+    
 app.listen(8080, () => {
   console.log('Your app is listening on port 8080');
 });

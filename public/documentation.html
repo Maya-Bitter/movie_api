@@ -85,6 +85,7 @@
 <td>Request body data format</td>
 <td>Response body data format</td>
 </tr>
+
 <tr>
 <td>Return a list of ALL movies to the user</td>
 <td>/movies</td>
@@ -92,14 +93,15 @@
 <td>None</td>
 <td>A JSON object holding data about all the movies</td>
 </tr>
+
 <tr>
 <td>Return data (description, genre, director, image URL, <br>whether it\'s featured or not, about a single movie by title to the user</td>
 <td>/movies/[title]</td>
 <td>GET</td>
 <td>None</td>
-<td>A JSON object holding data about a single movie
-</td>
+<td>A JSON object holding data about a single movie</td>
 </tr>
+
 <tr>
 <td>Return data about a genre (description) by name/title (e.g., “Thriller”)</td>
 <td>/movies/[genre]/[genreName]</td>
@@ -107,6 +109,7 @@
 <td>None</td>
 <td>A JSON object holding data about a genre</td>
 </tr>
+
 <tr>
 <td>Return data about a director (bio, birth year, death year) by name</td>
 <td>movies/[directors]/[directorName]</td>
@@ -114,17 +117,16 @@
 <td>None</td>
 <td>A JSON object holding data about a director</td>
 </tr>
+
 <tr>
 <td>Allow new users to register</td>
 <td>/users</td>
 <td>POST</td>
-
 <td>A JSON object holding data about the new user to add, structured like:<br><br>
 {<br>
 name : "John",<br>
 favouriteMovies: [ ]<br>
 }</td>
-
 <td>A JSON object holding data about the user that was added, including an ID:<br><br>
 {<br>
 id:5,<br>
@@ -135,15 +137,16 @@ favouriteMovies: [ ]<br>
 
 <tr>
 <td>Allow users to update their user info (username)</td>
-<td>/users[id]</td>
+<td>/users/[id]</td>
 <td>PUT</td>
 <td>None</td>
 <td></td>
 </tr>
+
 <tr>
 <td>Allow users to add a movie to their list of favorites<br>(showing only a text that a movie has been added)</td>
-<td></td>
-<td></td>
+<td>/users/[id]/[movieTitle]</td>
+<td>POST</td>
 <td></td>
 <td></td>
 </tr>
@@ -164,7 +167,6 @@ favouriteMovies: [ ]<br>
 <td></td>
 </tr>
 </table>
-
 
 <script src="script.js"></script>
 
