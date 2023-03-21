@@ -166,7 +166,7 @@ Featured: false
 
 "Genre": {
 "Name": "Drama",
-"Description": "Drama is a category or genre of narrative fiction (or semi-fiction) intended to be more serious than humorous in tone. Drama of this kind is usually qualified with additional terms that specify its particular super-genre, macro-genre, or micro-genre, such as soap opera, police crime drama, political drama, legal drama, historical drama, domestic drama, teen drama, and comedy-drama (dramedy)."
+"Description": "Drama is a category or genre of narrative fiction (or semi-fiction) intended to be more serious than humorous in tone. Drama of this kind is usually qualified with additional terms that specify its particular super-genre, macro-genre, or micro-genre, such as soap opera, police crime drama, political drama, legal drama, historical drama, domestic drama, teen drama, and comedy-drama (dramedy).",
 },
 
 "Director": {
@@ -178,6 +178,45 @@ Featured: false
 ImageUrl: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/2JRyCKaRKyJAVpsIHeLvPw5nHmw.jpg",
 Featured: false
 },
+
+{ 
+"Title": "Pretty Woman",
+"Description": "When a millionaire wheeler-dealer enters a business contract with a Hollywood hooker Vivian Ward, he loses his heart in the bargain.",
+
+"Genre": {
+"Name": "Comedy",
+"Description": "Comedy is a genre of film in which the main emphasis is on humor. These films are designed to make the audience laugh through amusement and most often work by exaggerating characteristics for humorous effect."
+},
+  
+"Director": {
+"Name": "Garry Kent Marshall", 
+"Bio": "Garry Kent Marshall  was an American actor, director, writer and producer. His notable credits include creating Happy Days and The Odd Couple and directing Nothing In Common, Pretty Woman, Runaway Bride, Valentine's Day, and The Princess Diaries.", 
+"Birth": "1969",
+"Death": "2016",
+},
+
+ImageUrl: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/hVHUfT801LQATGd26VPzhorIYza.jpg",
+Featured: false
+},
+
+{
+"Title": "Catch me if you can",
+"Description": "A true story about Frank Abagnale Jr. who, before his 19th birthday, successfully conned millions of dollars worth of checks as a Pan Am pilot, doctor, and legal prosecutor. An FBI agent makes it his mission to put him behind bars. But Frank not only eludes capture, he revels in the pursuit.",
+
+"Genre": {
+"Name": "Drama",
+"Description": "Drama is a category or genre of narrative fiction (or semi-fiction) intended to be more serious than humorous in tone. Drama of this kind is usually qualified with additional terms that specify its particular super-genre, macro-genre, or micro-genre, such as soap opera, police crime drama, political drama, legal drama, historical drama, domestic drama, teen drama, and comedy-drama (dramedy)."
+},
+
+"Director": {
+"Name": "Steven Allan Spielberg",
+"Bio": "Steven Allan Spielberg is an American film director, writer and producer. A major figure of the New Hollywood era and pioneer of the modern blockbuster, he is the most commercially successful director of all time. Spielberg is the recipient of various accolades, including three Academy Awards, a Kennedy Center honor, four Directors Guild of America Awards, two BAFTA Awards, a Cecil B. DeMille Award and an AFI Life Achievement Award. Seven of his films have been inducted into the National Film Registry by the Library of Congress as 'culturally, historically or aesthetically significant'.",
+"Birth": "1946",
+},
+
+ImageUrl: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg",
+Featured: false
+}
   
 ];
 
