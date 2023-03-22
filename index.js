@@ -189,9 +189,9 @@ Featured: false
 },
   
 "Director": {
-"Name": "Garry Kent Marshall", 
-"Bio": "Garry Kent Marshall  was an American actor, director, writer and producer. His notable credits include creating Happy Days and The Odd Couple and directing Nothing In Common, Pretty Woman, Runaway Bride, Valentine's Day, and The Princess Diaries.", 
-"Birth": "1969",
+"Name": "Garry Marshall", 
+"Bio": "Garry Marshall was an American actor, director, writer and producer. His notable credits include creating Happy Days and The Odd Couple and directing Nothing In Common, Pretty Woman, Runaway Bride, Valentine's Day, and The Princess Diaries.", 
+"Birth": "1934",
 "Death": "2016",
 },
 
