@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); // importing the package //
 
-let movieSchema = mongoose.Schema({
+let movieSchema = mongoose.Schema({     // Defining the Schema //
     Title: {type: String, required: true},
     Description: {type: String, required: true},
     Genre: {
