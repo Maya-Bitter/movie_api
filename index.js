@@ -3,11 +3,15 @@ const express = require('express'),
   uuid = require('uuid');
   morgan = require('morgan'); // Morgan is imported locally //
   methodOverride = require('method-override');
+  const mongoose = require('mongoose');   // Integrating Mongoose with a REST API //
+const Models = require('./models.js');
+
+const Movies = Models.Movie;
+const Users = Models.User;
 
 const app = express();
 
 app.use(bodyParser.json());
-
 
 let users = [
 
