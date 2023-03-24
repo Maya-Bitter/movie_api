@@ -6,6 +6,8 @@ const express = require('express'),
   const mongoose = require('mongoose');   // Integrating Mongoose with a REST API //
 const Models = require('./models.js');
 
+mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true, useUnifiedTopology: true }); // This allows Mongoose to connect to that database so it can perform CRUD operations on the documents it contains from within your REST API //
+
 const Movies = Models.Movie;
 const Users = Models.User;
 
