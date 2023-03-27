@@ -233,7 +233,18 @@ app.delete('/users/:Username', (req, res) => {
     });
 });
 
-// decoentation.html //
+// access documentation.html using express.static 
+
+//app.use('/documentation.html',press.static("public"));
+
+//error handling
+
+//app.use((err, req, res, next) => {
+//  console.error(err.stack);
+//  res.status(500).send(Ërror");
+//});
+
+// decomentation.html //
 
   app.get('/documentation.html', (req, res) => {                  
   res.sendFile('public/documentation.html', { root: __dirname });
