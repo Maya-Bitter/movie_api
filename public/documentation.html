@@ -122,17 +122,23 @@
 <td>Allow new users to register</td>
 <td>/users</td>
 <td>POST</td>
-<td>A JSON object holding data about the new user to add, structured like:<br><br>
+<td>A JSON object holding data about user to add, structured like:<br>
 {<br>
-name : "John",<br>
-favouriteMovies: [ ]<br>
+  ID: Integer,<br>
+  Username: "userName", String,<br>
+  Password: "Password", String,<br>
+  Email: "example-email@gmail.com", String,<br>
+  Birthday: Date: "1990-01-01",<br>
+  favouriteMovies: [],<br>
 }</td>
-<td>A JSON object holding data about the user that was added, including an ID:<br><br>
+<td>A JSON object holding data about the user that was added, structured like:<br>
 {<br>
-id:5,<br>
-name : "Joe",<br>
-favouriteMovies: [ ]<br>
-}</td>
+  ID: Integer,<br>
+  Username: String,<br>
+  Password: String,<br>
+  Email: String,<br>
+}<br>
+</td>
 </tr>
 
 <tr>
@@ -140,20 +146,17 @@ favouriteMovies: [ ]<br>
 <td>/users/[id]</td>
 <td>PUT</td>
 <td>None</td>
-<td></td>
+<td>A JSON object holding data about the updated user information</td>
 </tr>
 
 <tr>
 <td>Allow users to add a movie to their list of favorites<br>(showing only a text that a movie has been added)</td>
 <td>/users/[id]/[movieTitle]</td>
 <td>POST</td>
-<td>A JSON object holding data about the fabourite movie the user has added, structured like:
+<td>A JSON object holding data about the fabourite movie the user has added, structured like:<br>
 {<br>
-"id": 1,<br>
-"name": "Alexander",<br>
-"favouriteMovies": [<br>
-    "Fight Club"<br>
-]<br>
+ Username: "userName", String,<br>
+favouriteMovies: [],<br>
 }
 </td>
 <td>A text message indicating whether the movie has been added to their favourites list</td>
