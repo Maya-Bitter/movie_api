@@ -13,7 +13,7 @@ const express = require('express'),
   const Genres = Models.Genre;
   const Directors = Models.Director;
 
-mongoose.connect('mongodb://localhost:27017/cfDB', { useNewUrlParser: true, useUnifiedTopology: true }); 
+mongoose.connect('mongodb://127.0.0.1:27017/cfDB', { useNewUrlParser: true, useUnifiedTopology: true }); 
 // This allows Mongoose to connect to that database so it can perform CRUD operations on the documents it contains from within your REST API //
 
 app.use(bodyParser.json());
@@ -250,6 +250,6 @@ app.delete('/users/:Username', (req, res) => {
   res.sendFile('public/documentation.html', { root: __dirname });
 });
    
-app.listen(8080, () => {
-  console.log('Your app is listening on port 8080');
+app.listen(8001, () => {
+  console.log('Your app is listening on port 8001');
 });
