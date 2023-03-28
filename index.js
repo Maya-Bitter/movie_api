@@ -25,7 +25,7 @@ app.use(morgan("common"));
 // READ //
 
 app.get("/", (req, res) => {
-res.send("Welcome to MyFlix!");
+res.send("Welcome to MyFlix site!");
 });
 
 // Return a JSON object of all movies /movies //
@@ -77,7 +77,7 @@ app.get('/movies/:Title', (req, res) => {
 
 // READ //
 
-app.get('/genre/:Name', (req, res) => {
+app.get('movies/genre/:Name', (req, res) => {
 Genres.findOne({Name: req.params.Name})
 .then((genre) => {
   res.json(genre.Description);
@@ -92,7 +92,7 @@ Genres.findOne({Name: req.params.Name})
 
 // READ //
 
-app.get('/director/:Name', (req, res) => {
+app.get('movies/director/:Name', (req, res) => {
   Genres.findOne({Name: req.params.Name})
   .then((director) => {
     res.json(director);
