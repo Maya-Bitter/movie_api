@@ -190,9 +190,7 @@ app.put('/users/:Username', (req, res) => {
 
 // create //
 
-// Add a movie to a user's list of favorites //
-
-
+// Add a movie to a user's list of favorites
 
 app.post('/users/:Username/movies/:MovieID', (req, res) => {
   Users.findOneAndUpdate({ Username: req.params.Username }, {
@@ -213,19 +211,20 @@ app.post('/users/:Username/movies/:MovieID', (req, res) => {
 
 // Allow users to delete a movie to their list of favorites //
 
-app.delete('/users/:id/:movieTitle', (req, res) => {
-const { id, movieTitle } = req.params;
-
-let user  = users.find(user => user.id == id);
-
-if (user) {
-  user.favouriteMovies = users.favouriteMovies.filter(title => title !== movieTitle);
-  res.status(200).send('$ {movieTitle} has been removed from user ${id} array'); // I receive an error //
+app.delete('/users/:Username/movies/:MovieID', (req, res) => {
+Users.findOneAndUpdate({ Username: req.params.Username }, {
+  $pull: { FavoriteMovies: req.params.MovieID }
+},
+{ new: true }, // This line makes sure that the updated document is returned
+(err, updatedUser) => {
+if (err) {
+  console.error(err);
+  res.status(500).send('Error: ' + err);
 } else {
-  res.status(400).send('no such user')
+  res.json(updatedUser);
 }
-    
-})
+});
+});
 
 // DELETE //
 
