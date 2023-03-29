@@ -10,9 +10,7 @@ const express = require('express'),
 
   const Movies = Models.Movie;
   const Users = Models.User;
-  const Genres = Models.Genre;
-  const Directors = Models.Director;
-
+  
 mongoose.connect('mongodb://127.0.0.1:27017/cfDB', { useNewUrlParser: true, useUnifiedTopology: true }); 
 // This allows Mongoose to connect to that database so it can perform CRUD operations on the documents it contains from within your REST API //
 
@@ -92,10 +90,10 @@ app.get('/movies/:Title', (req, res) => {
 
 // READ //
 
-app.get('/genre/:Name', (req, res) => { // should it be a movie before the /genre ??? 
-Genres.findOne({Name: req.params.Name})
-.then((genre) => {
-  res.json(genre.Description);
+app.get('/movies/genre/:genreName', (req, res) => {
+Movies.findOne({ 'Genre.Name': req.params.genreName })
+.then((movie) => {
+  res.json(movie.Genre);
 })
 .catch((err) => {
   console.error(err);
@@ -107,16 +105,16 @@ Genres.findOne({Name: req.params.Name})
 
 // READ //
 
-app.get('/director/:Name', (req, res) => { // should it be a movie before the /director ??? 
-  Directors.findOne({Name: req.params.Name})
-  .then((director) => {
-    res.json(director);
-  })
-  .catch((err) => {
-    console.error(err);
-    res.status(500).send('Error: ' + err);
-  });
-  });
+app.get('/movies/directors/:directorName', (req, res) => {
+Movies.findOne({ 'Director.Name': req.params.directorName })
+.then((movie) => {
+  res.json(movie.Director);
+})
+.catch((err) => {
+  console.error(err);
+  res.status(500).send('Error: ' + err);
+});
+}); 
 
 // Allow new users to register //
 
@@ -193,6 +191,8 @@ app.put('/users/:Username', (req, res) => {
 // create //
 
 // Add a movie to a user's list of favorites //
+
+
 
 app.post('/users/:Username/movies/:MovieID', (req, res) => {
   Users.findOneAndUpdate({ Username: req.params.Username }, {
