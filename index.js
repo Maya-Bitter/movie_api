@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 
 app.use(morgan("common"));
 
-// welcome text when in localhost8080/ //
+// welcome text when in localhost8001/ //
 
 // READ //
 
