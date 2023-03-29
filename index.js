@@ -58,6 +58,21 @@ app.get('/users', (req, res) => {
     });
 });
 
+// Get specific user by username //
+
+// READ //
+
+app.get('/users/:Username', (req, res) => {
+  Users.findOne({Username: req.params.Username})
+    .then((user) => {
+      res.json(user);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
+
 // Gets JSON object (description, genre, director, image URL) about a single movie by title //
 
 // READ //
