@@ -93,7 +93,7 @@ Genres.findOne({Name: req.params.Name})
 // READ //
 
 app.get('/director/:Name', (req, res) => { // should it be a movie before the /director ??? 
-  Genres.findOne({Name: req.params.Name})
+  Directors.findOne({Name: req.params.Name})
   .then((director) => {
     res.json(director);
   })
