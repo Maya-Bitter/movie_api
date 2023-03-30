@@ -18,7 +18,6 @@ app.use(bodyParser.json());
 app.use(morgan("common"));
 
 let auth = require('./auth')(app);
-
 const passport = require('passport');
 require('./passport');
 
