@@ -15,6 +15,8 @@ mongoose.connect('mongodb://127.0.0.1:27017/cfDB', { useNewUrlParser: true, useU
 // This allows Mongoose to connect to that database so it can perform CRUD operations on the documents it contains from within your REST API //
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(morgan("common"));
 
 let auth = require('./auth')(app);
