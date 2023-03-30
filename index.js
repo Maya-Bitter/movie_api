@@ -132,7 +132,7 @@ Movies.findOne({ 'Director.Name': req.params.directorName })
   Birthday: Date
 }*/
 
-app.post('/users', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.post('/users', passport.authenticate('jwt', { session: false }), (req, res) => { // should the passport be here? //
 Users.findOne({ Username: req.body.Username })
 .then((user) => {
   if (user) {
