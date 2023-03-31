@@ -225,7 +225,7 @@ Users
 //});
 //});
 
-// OLD CODE FOR Allow new users to register //
+// Allow new users to register old code //
 
 // CREATE //
 
