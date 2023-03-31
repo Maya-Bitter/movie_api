@@ -139,7 +139,37 @@ Movies.findOne({ 'Director.Name': req.params.directorName })
 });
 }); 
 
-// Allow new users to register //
+// new code fo allow new users to register //
+
+app.post('/users', (req, res) => {
+let hashedPassword = Users.hashPassword(req.body.Password);
+Users.findOne({ Username: req.body.Username }) // Search to see if a user with the requested username already exists
+.then((user) => {
+if (user) {
+//If the user is found, send a response that it already exists
+return res.status(400).send(req.body.Username + ' already exists');
+} else {
+Users
+  .create({
+    Username: req.body.Username,
+    Password: hashedPassword,
+    Email: req.body.Email,
+    Birthday: req.body.Birthday
+  })
+  .then((user) => { res.status(201).json(user) })
+  .catch((error) => {
+    console.error(error);
+    res.status(500).send('Error: ' + error);
+  });
+}
+})
+.catch((error) => {
+console.error(error);
+res.status(500).send('Error: ' + error);
+});
+});
+
+// OLD CODE FOR Allow new users to register //
 
 // CREATE //
 
@@ -152,31 +182,31 @@ Movies.findOne({ 'Director.Name': req.params.directorName })
   Birthday: Date
 }*/
 
-app.post('/users', (req, res) => { 
-Users.findOne({ Username: req.body.Username })
-.then((user) => {
-  if (user) {
-    return res.status(400).send(req.body.Username + 'already exists');
-  } else {
-    Users
-      .create({
-        Username: req.body.Username,
-        Password: req.body.Password,
-        Email: req.body.Email,
-        Birthday: req.body.Birthday
-      })
-      .then((user) =>{res.status(201).json(user) })
-    .catch((error) => {
-      console.error(error);
-      res.status(500).send('Error: ' + error);
-    })
-  }
-})
-.catch((error) => {
-  console.error(error);
-  res.status(500).send('Error: ' + error);
-});
-});
+//  app.post('/users', (req, res) => { 
+//  Users.findOne({ Username: req.body.Username })
+//  .then((user) => {
+//  if (user) {
+//  return res.status(400).send(req.body.Username + 'already exists');
+//  } else {
+//    Users
+//      .create({
+//        Username: req.body.Username,
+//        Password: req.body.Password,
+//        Email: req.body.Email,
+//        Birthday: req.body.Birthday
+//      })
+//      .then((user) =>{res.status(201).json(user) })
+//    .catch((error) => {
+//      console.error(error);
+//     res.status(500).send('Error: ' + error);
+//    })
+//  }
+//})
+//.catch((error) => {
+//  console.error(error);
+//  res.status(500).send('Error: ' + error);
+//});
+//});
 
 // UPDATE //
 
