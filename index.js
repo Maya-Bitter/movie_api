@@ -429,7 +429,8 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
   app.get('/documentation.html', (req, res) => {                  
   res.sendFile('public/documentation.html', { root: __dirname });
 });
-   
-app.listen(8001, () => {
-  console.log('Your app is listening on port 8001');
+
+const port = process.env.PORT || 8001;
+app.listen(port, '0.0.0.0',() => {
+ console.log('Listening on Port ' + port);
 });
