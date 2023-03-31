@@ -1,5 +1,8 @@
 const mongoose = require('mongoose'); // importing the package //
 
+const bcrypt = require('bcrypt');
+
+
 let movieSchema = mongoose.Schema({     // Defining the Schema //
     Title: {type: String, required: true},
     Description: {type: String, required: true},
