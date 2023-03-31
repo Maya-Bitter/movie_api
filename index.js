@@ -19,6 +19,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(morgan("common"));
 
+const cors = require('cors');
+app.use(cors());
+
 let auth = require('./auth')(app);
 const passport = require('passport');
 require('./passport');
