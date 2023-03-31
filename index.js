@@ -8,6 +8,9 @@ const express = require('express'),
   const mongoose = require('mongoose');   // Integrating Mongoose with a REST API //
   const Models = require('./models.js');
 
+  const { check, validationResult } = require('express-validator');
+
+
   const Movies = Models.Movie;
   const Users = Models.User;
   
