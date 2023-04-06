@@ -1,5 +1,3 @@
-// test commit //
-
 const express = require('express'),
   bodyParser = require('body-parser'),
   uuid = require('uuid');
@@ -15,7 +13,7 @@ const express = require('express'),
   const Movies = Models.Movie;
   const Users = Models.User;
   
-mongoose.connect('mongodb://127.0.0.1:27017/cfDB', { useNewUrlParser: true, useUnifiedTopology: true }); 
+  mongoose.connect(process.env.CONNECTION_URI || 'mongodb://127.0.0.1:27017/cfDB', { useNewUrlParser: true, useUnifiedTopology: true }); 
 // This allows Mongoose to connect to that database so it can perform CRUD operations on the documents it contains from within your REST API //
 
 app.use(bodyParser.json());
