@@ -24,10 +24,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(morgan("common"));
 
-const cors = require('cors');
+const cors = require('cors'); // Implement CORS into your app, ensuring that all domains are allowed to make requests to your API //
 app.use(cors());
 
-//const allowedOrigins =  THIS CODE DOESNT WORK 
+//const allowedOrigins =  THIS CODE DOESNT WORK.
 //['http://localhost:8001', 
 //'http://localhost:1234', 
 //'https://m-flix.herokuapp.com'];
