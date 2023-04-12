@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>myFlix</title>
+
+<style>
+
+body {
+  
+background-color: whitesmoke;
+color:black ;
+font-family: Arial;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="headline">
+
+    <p><h1>Achievement 2 Project: myFlix</h1></p><br>
+
+</div>
+
+<div class="objective"> 
+
+    <h2>Objective</h2><br>
+       
+    To build the server-side component of a “movies” web application.<br>
+    The web application  provides users with access to information about different
+    movies, directors, and genres.<br> Users will be able to sign up, update their
+    personal information, and create a list of their favorite movies.<br>
+
+</div>
+
+<div class="technical">
+
+    <p><h2>Technical Requirements</h2></p>
+
+<ul>
+    <li>The API must be a Node.js and Express application.</li>
+    <li>The API must use REST architecture, with URL endpoints corresponding to the data operations listed above</li>
+    <li>The API must use at least three middleware modules, such as the body-parser package for reading data from requests and morgan for logging.</li>
+    <li>The API must use a “package.json” file.</li>
+    <li>The database must be built using MongoDB.</li>
+    <li>The business logic must be modeled with Mongoose.</li>
+    <li>The API must provide movie information in JSON format.</li>
+    <li>The JavaScript code must be error-free.</li>
+    <li>The API must be tested in Postman.</li>
+    <li>The API must include user authentication and authorization code.</li>
+    <li>The API must meet data security regulations.</li>
+    <li>The API source code must be deployed to a publicly accessible platform like GitHub.</li>
+    <li>The API must be deployed to Heroku.</li>
+  </ul>
+
+</div>
+
+<div class = "Essential Features">
+
+  <p><h2>Essential Features</h2></p>
+
+  <ul>
+
+<li>Return a list of ALL movies to the user;</li>
+<li>Return data (description, genre, director, image URL, whether it's featured or not, about a single movie by title to the user;</li>
+<li>Return data about a genre (description) by name/title (e.g., “Thriller”);</li>
+<li>Return data about a director (bio, birth year, death year) by name;</li>
+<li>Allow new users to register;</li>
+<li>Allow users to update their user info (username);</li>
+<li>Allow users to add a movie to their list of favorites (showing only a text that a movie has been added);</li>
+<li>Allow users to remove a movie from their list of favorites (showing only a text that a movie has been removed);</li>
+<li>Allow existing users to deregister (showing only a text that a user email has been removed).</li>
+
+</ul>
+</div>
+
+<style>
+  table, th, td {
+    border:1px solid black;
+  }
+  </style>
+ 
+<h2>Essential Features</h2>
+
+<table style="width:100%">
+
+<tr>
+<td>Request</td>
+<td>URL</td>
+<td>HTTP Method</td>
+<td>Request body data format</td>
+<td>Response body data format</td>
+</tr>
+
+<tr>
+<td>Return a list of ALL movies to the user</td>
+<td>/movies</td>
+<td>GET</td>
+<td>None</td>
+<td>A JSON object holding data about all the movies</td>
+</tr>
+
+<tr>
+<td>Return data (description, genre, director, image URL, <br>whether it's featured or not), about a single movie by title to the user</td>
+<td>/movies/[title]</td>
+<td>GET</td>
+<td>None</td>
+<td>A JSON object holding data about a single movie</td>
+</tr>
+
+<tr>
+<td>Return data about a genre (description) by name/title (e.g., “Thriller”)</td>
+<td>/movies/[genre]/[genreName]</td>
+<td>GET</td>
+<td>None</td>
+<td>A JSON object holding data about a genre</td>
+</tr>
+
+<tr>
+<td>Return data about a director (bio, birth year, death year) by name</td>
+<td>movies/[directors]/[directorName]</td>
+<td>GET</td>
+<td>None</td>
+<td>A JSON object holding data about a director</td>
+</tr>
+
+<tr>
+<td>Allow new users to register</td>
+<td>/users</td>
+<td>POST</td>
+<td>A JSON object holding data about user to add, structured like:<br>
+{<br>
+  ID: Integer,<br>
+  Username: "userName", String,<br>
+  Password: "Password", String,<br>
+  Email: "example-email@gmail.com", String,<br>
+  Birthday: Date: "1990-01-01",<br>
+  favouriteMovies: [],<br>
+}</td>
+<td>A JSON object holding data about the user that was added, structured like:<br>
+{<br>
+  ID: Integer,<br>
+  Username: String,<br>
+  Password: String,<br>
+  Email: String,<br>
+}<br>
+</td>
+</tr>
+
+<tr>
+<td>Allow users to update their user info (username)</td>
+<td>/users/:Username]</td>
+<td>PUT</td>
+<td>None</td>
+<td>A JSON object holding data about the updated user information</td>
+</tr>
+
+<tr>
+<td>Allow users to add a movie to their list of favorites<br>(showing only a text that a movie has been added)</td>
+<td>/users/:Username/movies/:MovieID</td>
+<td>POST</td>
+<td>A JSON object holding data about the fabourite movie the user has added, structured like:<br>
+{<br>
+ Username: "userName", String,<br>
+favouriteMovies: [],<br>
+}
+</td>
+<td>A text message indicating whether the movie has been added to their favourites list</td>
+</tr>
+
+<tr>
+<td>Allow users to remove a movie from their list of favorites<br>(showing only a text that a movie has been removed)</td>
+<td>/users/:Username/movies/:MovieID</td>
+<td>DELETE</td>
+<td>None</td>
+<td>A text message indicating whether the user has successfully removed a movie from their favourites list</td>
+</tr>
+
+<tr>
+<td>Allow existing users to deregister<br>(showing only a text that a user email has been removed).</td>
+<td>/users/:Username</td>
+<td>DELETE</td>
+<td>None</td>
+<td>A text message indicating whether the user was successfully removed</td>
+</tr>
+</table>
+
+<script src="script.js"></script>
+
+  <!--
+  This script places a badge on your repl's full-browser view back to your repl's cover
+  page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
+  teal, blue, blurple, magenta, pink!
+  -->
+  <script src="https://replit.com/public/js/replit-badge-v2.js" theme="dark" position="bottom-right"></script>
+</body>
+
+</html>
