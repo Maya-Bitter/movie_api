@@ -13,8 +13,10 @@ const express = require('express'),
   const Movies = Models.Movie;
   const Users = Models.User;
   
-  mongoose.connect(process.env.CONNECTION_URI || 'mongodb://127.0.0.1:27017/cfDB', { useNewUrlParser: true, useUnifiedTopology: true }); 
+ // mongoose.connect(process.env.CONNECTION_URI || 'mongodb://127.0.0.1:27017/cfDB', { useNewUrlParser: true, useUnifiedTopology: true }); OLD CODE //
 // This allows Mongoose to connect to that database so it can perform CRUD operations on the documents it contains from within your REST API //
+
+mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
