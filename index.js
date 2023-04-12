@@ -12,19 +12,33 @@ const express = require('express'),
 
   const Movies = Models.Movie;
   const Users = Models.User;
-  
- // mongoose.connect(process.env.CONNECTION_URI || 'mongodb://127.0.0.1:27017/cfDB', { useNewUrlParser: true, useUnifiedTopology: true }); OLD CODE //
+
 // This allows Mongoose to connect to that database so it can perform CRUD operations on the documents it contains from within your REST API //
 
-mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect(process.env.CONNECTION_URI || 'mongodb://127.0.0.1:27017/cfDB', { useNewUrlParser: true, useUnifiedTopology: true }); OLD CODE //
+
+mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true }); // NEW CODE
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(morgan("common"));
 
-const cors = require('cors');
-app.use(cors());
+const allowedOrigins = 
+['http://localhost:8001', 
+'http://localhost:1234', 
+'https://m-flix.herokuapp.com'];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){ // If a specific origin isn’t found on the list of allowed origins
+      let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
+      return callback(new Error(message ), false);
+    }
+    return callback(null, true);
+  }
+}));
 
 // By default, it will set the application to allow requests from all origins; however, if you want only certain origins to be given access, you’ll need to replace app.use(cors()); with the following code:
 
