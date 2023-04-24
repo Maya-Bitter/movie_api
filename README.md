@@ -3,6 +3,8 @@
 Achievement 2 Project:
 myFlix
 
+https://m-flix.herokuapp.com
+
 Project description & dependencies:
 
 in this prokect I build the server-side component of a “movies” web application. 
