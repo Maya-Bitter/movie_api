@@ -13,7 +13,7 @@ const { check, validationResult } = require("express-validator");
 const Movies = Models.Movie;
 const Users = Models.User;
 
-// This allows Mongoose to connect to that database so it can perform CRUD operations on the documents it contains from within your REST API //
+//* This allows Mongoose to connect to that database so it can perform CRUD operations on the documents it contains from within your REST API */
 
 mongoose.connect(process.env.CONNECTION_URI, {
   useNewUrlParser: true,
