@@ -13,7 +13,7 @@ const { check, validationResult } = require("express-validator");
 const Movies = Models.Movie;
 const Users = Models.User;
 
-//* This allows Mongoose to connect to that database so it can perform CRUD operations on the documents it contains from within your REST API */
+/** This allows Mongoose to connect to that database so it can perform CRUD operations on the documents it contains from within your REST API */
 
 mongoose.connect(process.env.CONNECTION_URI, {
   useNewUrlParser: true,
@@ -28,7 +28,7 @@ app.use(morgan("common"));
 const cors = require("cors"); // Implement CORS into your app, ensuring that all domains are allowed to make requests to your API //
 app.use(cors());
 
-// ensure that a user input field called “Username” within the body of an HTTP request contained only alphanumeric characters //
+/** ensure that a user input field called “Username” within the body of an HTTP request contained only alphanumeric characters */
 
 check(
   "Username",
@@ -39,7 +39,7 @@ let auth = require("./auth")(app);
 const passport = require("passport");
 require("./passport");
 
-// welcome text when in localhost8001/ //
+/** welcome text when in localhost8001/ */
 
 // READ //
 
@@ -47,7 +47,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to MyFlix site!");
 });
 
-// Return a JSON object of all movies /movies //
+/** Return a JSON object of all movies /movies */
 
 // READ //
 
