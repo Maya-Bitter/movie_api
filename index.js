@@ -66,6 +66,14 @@ app.get(
   }
 );
 
+/**
+ * Returns a list of all users
+ * @method GET
+ * @param {string} endpoint - /users
+ * @param {function} callback - function(req, res)
+ * @returns {object} - JSON object containing all users
+ */
+
 // Get all users //
 
 // READ //
