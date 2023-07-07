@@ -2,10 +2,10 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   uuid = require("uuid");
 
-const morgan = require("morgan"); // Morgan is imported locally //
+const morgan = require("morgan"); // Morgan is imported locally
 methodOverride = require("method-override");
 const app = express();
-const mongoose = require("mongoose"); // Integrating Mongoose with a REST API //
+const mongoose = require("mongoose"); // Integrating Mongoose with a REST API
 const Models = require("./models.js");
 
 const { check, validationResult } = require("express-validator");
@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(morgan("common"));
 
-const cors = require("cors"); // Implement CORS into your app, ensuring that all domains are allowed to make requests to your API //
+const cors = require("cors"); // Implement CORS into your app, ensuring that all domains are allowed to make requests to your API
 app.use(cors());
 
 /** ensure that a user input field called “Username” within the body of an HTTP request contained only alphanumeric characters */
@@ -41,7 +41,7 @@ require("./passport");
 
 /** welcome text when in localhost8001/ */
 
-// READ //
+// READ
 
 app.get("/", (req, res) => {
   res.send("Welcome to MyFlix site!");
@@ -49,7 +49,7 @@ app.get("/", (req, res) => {
 
 /** Return a JSON object of all movies /movies */
 
-// READ //
+// READ
 
 app.get(
   "/movies",
@@ -74,9 +74,9 @@ app.get(
  * @returns {object} - JSON object containing all users
  */
 
-// Get all users //
+// Get all users
 
-// READ //
+// READ
 
 app.get(
   "/users",
@@ -93,9 +93,9 @@ app.get(
   }
 );
 
-// Get specific user by username //
+// Get specific user by username
 
-// READ //
+// READ
 
 app.get(
   "/users/:Username",
@@ -112,9 +112,9 @@ app.get(
   }
 );
 
-// Gets JSON object (description, genre, director, image URL) about a single movie by title //
+// Gets JSON object (description, genre, director, image URL) about a single movie by title
 
-// READ //
+// READ
 
 app.get(
   "/movies/:Title",
@@ -133,7 +133,7 @@ app.get(
 
 // Gets JSON genre info (description)
 
-// READ //
+// READ
 
 app.get(
   "/movies/genre/:genreName",
@@ -150,9 +150,9 @@ app.get(
   }
 );
 
-// Gets Json data about a director (bio, birth year, death year) by name //
+// Gets Json data about a director (bio, birth year, death year) by name
 
-// READ //
+// READ
 
 app.get(
   "/movies/directors/:directorName",
@@ -169,7 +169,7 @@ app.get(
   }
 );
 
-// Code with validation to allow new users to register //
+// Code with validation to allow new users to register
 
 app.post(
   "/users",
@@ -329,7 +329,7 @@ app.post(
 //})
 //});
 
-// update user info new with hashPassword & validation //
+// update user info new with hashPassword & validation
 
 app.put(
   "/users/:Username",
@@ -388,7 +388,7 @@ app.put(
   }
 );
 
-// create //
+// create
 
 // Add a movie to a user's list of favorites
 
@@ -419,9 +419,9 @@ app.post(
   }
 );
 
-// DELETE //
+// DELETE
 
-// Allow users to delete a movie to their list of favorites //
+// Allow users to delete a movie to their list of favorites
 
 app.delete(
   "/users/:Username/movies/:MovieID",
@@ -450,9 +450,9 @@ app.delete(
   }
 );
 
-// DELETE //
+// DELETE
 
-// Allow existing users to deregister  //
+// Allow existing users to deregister
 
 // Delete a user by username
 
@@ -486,7 +486,7 @@ app.delete(
 //  res.status(500).send(Ërror");
 //});
 
-// decomentation.html //
+// decomentation.html
 
 app.get("/documentation.html", (req, res) => {
   res.sendFile("public/documentation.html", { root: __dirname });
