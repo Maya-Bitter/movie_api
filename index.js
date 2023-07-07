@@ -93,9 +93,9 @@ app.get(
   }
 );
 
-// Get specific user by username
-
-// READ
+/**
+ * function to Get specific user by username
+ */
 
 app.get(
   "/users/:Username",
