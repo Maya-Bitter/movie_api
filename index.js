@@ -2,13 +2,6 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   uuid = require("uuid");
 
-/**
- * Returns the sum of a and b
- * @param {number} a
- * @param {number} b
- * @returns {number}
- */
-
 const morgan = require("morgan"); // Morgan is imported locally //
 methodOverride = require("method-override");
 const app = express();
