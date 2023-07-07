@@ -6,12 +6,10 @@ const jwt = require("jsonwebtoken"),
 require("./passport");
 
 /**
- *
  * @param {*} user
  * @returns
  * This function takes the user object and creates a JWT using the sign() method.
  * The first argument is the user object to encode into the JWT.
- *
  */
 
 let generateJWTToken = (user) => {
