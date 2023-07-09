@@ -68,6 +68,7 @@ app.get(
 
 /**
  * Returns a list of all users
+ *
  * @method GET
  * @param {string} endpoint - /users
  * @param {function} callback - function(req, res)
