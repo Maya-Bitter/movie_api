@@ -10,7 +10,7 @@ require("./passport");
  * The first argument is the user object to encode into the JWT.
  *
  * @param {*} user
- * @returns
+ * @returns {*}
  */
 
 let generateJWTToken = (user) => {
@@ -27,7 +27,7 @@ let generateJWTToken = (user) => {
  * It uses the passport.authenticate() method, passing in the local strategy and a callback function.
  * POST login
  * @param {*} router
- * @returns
+ * @returns {*}
  */
 
 module.exports = (router) => {
