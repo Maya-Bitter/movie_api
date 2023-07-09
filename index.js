@@ -2,19 +2,26 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   uuid = require("uuid");
 
-const morgan = require("morgan"); // Morgan is imported locally
+/**
+ * Morgan is a HTTP request logger middleware for Node.js.
+ * Morgan is imported locally
+ */
+const morgan = require("morgan");
+
 methodOverride = require("method-override");
 const app = express();
+/**
+ *
+ * Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment.
+ * Integrating Mongoose and connecting to MongoDB
+ */
 const mongoose = require("mongoose"); // Integrating Mongoose with a REST API
 const Models = require("./models.js");
-
 const { check, validationResult } = require("express-validator");
-
 const Movies = Models.Movie;
 const Users = Models.User;
 
 /**
- *
  * This allows Mongoose to connect to that database so it can perform CRUD operations on the documents it contains from within your REST API
  */
 
@@ -134,9 +141,15 @@ app.get(
   }
 );
 
-// Gets JSON object (description, genre, director, image URL) about a single movie by title
-
-// READ
+/**
+ *
+ * This function returns a specific movie by title
+ *
+ * @method GET
+ * @param {string} endpoint - /movies/:Title
+ * @param {function} callback - function(req, res)
+ * @returns {object} - JSON object (description, genre, director, image URL) about a single movie by title
+ */
 
 app.get(
   "/movies/:Title",
@@ -153,9 +166,15 @@ app.get(
   }
 );
 
-// Gets JSON genre info (description)
-
-// READ
+/**
+ *
+ * This function returns a specific genre info
+ *
+ * @method GET
+ * @param {string} endpoint - /movies/genre/:genreName
+ * @param {function} callback - function(req, res)
+ * @returns {object} - JSON object genre info (description)
+ */
 
 app.get(
   "/movies/genre/:genreName",
@@ -172,9 +191,15 @@ app.get(
   }
 );
 
-// Gets Json data about a director (bio, birth year, death year) by name
-
-// READ
+/**
+ *
+ * This function returns JSON data about a director (bio, birth year, death year) by name
+ *
+ * @method GET
+ * @param {string} endpoint - /movies/directors/:directorName
+ * @param {function} callback - function(req, res)
+ * @returns {object} - JSON object about a director (bio, birth year, death year) by name
+ */
 
 app.get(
   "/movies/directors/:directorName",
