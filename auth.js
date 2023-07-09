@@ -27,6 +27,7 @@ let generateJWTToken = (user) => {
  * It uses the passport.authenticate() method, passing in the local strategy and a callback function.
  * POST login
  * @param {*} router
+ * @returns
  */
 
 module.exports = (router) => {
