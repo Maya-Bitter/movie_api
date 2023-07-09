@@ -6,10 +6,11 @@ const jwt = require("jsonwebtoken"),
 require("./passport");
 
 /**
- * @param {*} user
- * @returns
  * This function takes the user object and creates a JWT using the sign() method.
  * The first argument is the user object to encode into the JWT.
+ *
+ * @param {*} user
+ * @returns
  */
 
 let generateJWTToken = (user) => {
@@ -22,11 +23,11 @@ let generateJWTToken = (user) => {
 
 /**
  *
- * @param {*} router
  * This function is responsible for authenticating users.
  * It uses the passport.authenticate() method, passing in the local strategy and a callback function.
+ * POST login
+ * @param {*} router
  */
-/* POST login. */
 
 module.exports = (router) => {
   router.post("/login", (req, res) => {
