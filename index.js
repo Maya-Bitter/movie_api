@@ -34,7 +34,7 @@ app.use(morgan("common"));
  * ensuring that all domains are allowed to make requests to your API
  */
 
-const cors = require("cors"); //
+const cors = require("cors");
 app.use(cors());
 
 /**
@@ -56,15 +56,13 @@ require("./passport");
  * welcome text when in localhost8001/
  */
 
-// READ
-
 app.get("/", (req, res) => {
   res.send("Welcome to MyFlix site!");
 });
 
 /**
  *
- * Return a JSON object of all movies
+ * This funtion return a JSON object of all movies
  *
  * @method GET
  * @param {string} endpoint - /movies
@@ -88,7 +86,7 @@ app.get(
 );
 
 /**
- * Returns a list of all users
+ * This function returns a list of all users
  *
  * @method GET
  * @param {string} endpoint - /users
@@ -111,9 +109,15 @@ app.get(
   }
 );
 
-// Get specific user by username
-
-// READ
+/**
+ *
+ * This function returns a specific user by username
+ *
+ * @method GET
+ * @param {string} endpoint - /users/:Username
+ * @param {function} callback - function(req, res)
+ * @returns {object} - JSON object containing specific user
+ */
 
 app.get(
   "/users/:Username",
