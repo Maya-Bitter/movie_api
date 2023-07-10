@@ -70,7 +70,6 @@ app.get("/", (req, res) => {
 /**
  *
  * This funtion return a JSON object of all movies
- *
  * @method GET
  * @param {string} endpoint - /movies
  * @param {function} callback - function(req, res)
@@ -94,7 +93,6 @@ app.get(
 
 /**
  * This function returns a list of all users
- *
  * @method GET
  * @param {string} endpoint - /users
  * @param {function} callback - function(req, res)
@@ -120,7 +118,6 @@ app.get(
 /**
  *
  * This function returns a specific user by username
- *
  * @method GET
  * @param {string} endpoint - /users/:Username
  * @param {function} callback - function(req, res)
@@ -145,7 +142,6 @@ app.get(
 /**
  *
  * This function returns a specific movie by title
- *
  * @method GET
  * @param {string} endpoint - /movies/:Title
  * @param {function} callback - function(req, res)
@@ -171,7 +167,6 @@ app.get(
 /**
  *
  * This function returns a specific genre info
- *
  * @method GET
  * @param {string} endpoint - /movies/genre/:genreName
  * @param {function} callback - function(req, res)
@@ -196,7 +191,6 @@ app.get(
 /**
  *
  * This function returns JSON data about a director (bio, birth year, death year) by name
- *
  * @method GET
  * @param {string} endpoint - /movies/directors/:directorName
  * @param {function} callback - function(req, res)
@@ -221,7 +215,6 @@ app.get(
 /**
  *
  * This function creates a new user
- *
  * @method POST
  * @param {string} endpoint - /users
  * @param {function} callback - function(req, res)
@@ -390,7 +383,6 @@ app.post(
 /**
  *
  * This function update user info new with hashPassword & validation
- *
  * @method PUT
  * @param {string} endpoint - /users/:Username
  * @param {function} callback - function(req, res)
