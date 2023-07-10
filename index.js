@@ -74,7 +74,7 @@ app.get("/", (req, res) => {
  * @method GET
  * @param {string} endpoint - /movies
  * @param {function} callback - function(req, res)
- * @returns {object} - JSON object containing all movies
+ * @returns {object} - JSON object holding data about all the movies
  */
 
 app.get(
@@ -98,7 +98,8 @@ app.get(
  * @method GET
  * @param {string} endpoint - /users
  * @param {function} callback - function(req, res)
- * @returns {object} - JSON object containing all users
+ * @returns {object} - JSON object holding data about all the users
+
  */
 
 app.get(
@@ -123,7 +124,7 @@ app.get(
  * @method GET
  * @param {string} endpoint - /users/:Username
  * @param {function} callback - function(req, res)
- * @returns {object} - JSON object containing specific user by username
+ * @returns {object} - JSON object holding data about a specific user
  */
 
 app.get(
@@ -149,6 +150,7 @@ app.get(
  * @param {string} endpoint - /movies/:Title
  * @param {function} callback - function(req, res)
  * @returns {object} - JSON object (description, genre, director, image URL) about a single movie by title
+ *
  */
 
 app.get(
@@ -173,7 +175,7 @@ app.get(
  * @method GET
  * @param {string} endpoint - /movies/genre/:genreName
  * @param {function} callback - function(req, res)
- * @returns {object} - JSON object genre info (description)
+ * @returns {object} - A JSON object holding data about a genre (description)
  */
 
 app.get(
@@ -198,7 +200,7 @@ app.get(
  * @method GET
  * @param {string} endpoint - /movies/directors/:directorName
  * @param {function} callback - function(req, res)
- * @returns {object} - JSON object about a director (bio, birth year, death year) by name
+ * @returns {object} - JSON object holding data about a director (bio, birth year, death year) by name
  */
 
 app.get(
@@ -223,7 +225,8 @@ app.get(
  * @method POST
  * @param {string} endpoint - /users
  * @param {function} callback - function(req, res)
- * @returns {object} - JSON object about a user (Username, Password, Email, Birthday)
+ * @returns {object} - A JSON object holding data about the user that was added, structured like:
+ * { ID: Integer, Username: String, Password: String, Email: String,}
  */
 
 app.post(
@@ -391,7 +394,7 @@ app.post(
  * @method PUT
  * @param {string} endpoint - /users/:Username
  * @param {function} callback - function(req, res)
- * @returns {object} - JSON object about a user (Username, Password, Email, Birthday)
+ * @returns {object} - JSON object about a user updated data (Username, Password, Email, Birthday)
  */
 
 app.put(
@@ -457,7 +460,7 @@ app.put(
  * @method POST
  * @param {string} endpoint - /users/:Username/movies/:MovieID
  * @param {function} callback - function(req, res)
- * @returns {object} - JSON object Add a movie to a user's list of favorites
+ * @returns {object} - 	A JSON object holding data about the favourite movie the user has added, structured like: {Username: "userName", String, favouriteMovies: [],}
  */
 
 app.post(
@@ -493,7 +496,7 @@ app.post(
  * @method DELETE
  * @param {string} endpoint - /users/:Username/movies/:MovieID
  * @param {function} callback - function(req, res)
- * @returns {object} - JSON object deleted a movie from a user's list of favorites
+ * @returns {} 	A text message indicating whether the user has successfully removed a movie from their favourites list
  */
 
 app.delete(
@@ -526,9 +529,10 @@ app.delete(
 /**
  *
  * This function allows existing users to deregister
+ * @method DELETE
  * @param {string} endpoint - /users/:Username
  * @param {function} callback - function(req, res)
- * @returns {object} - JSON object deleted a user
+ * @returns {} A text message indicating whether the user was successfully removed
  */
 
 app.delete(
