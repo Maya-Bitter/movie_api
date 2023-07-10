@@ -123,7 +123,7 @@ app.get(
  * @method GET
  * @param {string} endpoint - /users/:Username
  * @param {function} callback - function(req, res)
- * @returns {object} - JSON object containing specific user
+ * @returns {object} - JSON object containing specific user by username
  */
 
 app.get(
@@ -225,6 +225,7 @@ app.get(
  * @param {function} callback - function(req, res)
  * @returns {object} - JSON object about a user (Username, Password, Email, Birthday)
  */
+
 app.post(
   "/users",
   // Validation logic here for request
@@ -452,12 +453,12 @@ app.put(
 
 /**
  *
- * This function Add a movie to a user's list of favorites
+ * This function allows users to Add a movie to a user's list of favorites
  * @method POST
  * @param {string} endpoint - /users/:Username/movies/:MovieID
  * @param {function} callback - function(req, res)
- * @returns {object} - JSON object 
-
+ * @returns {object} - JSON object Add a movie to a user's list of favorites
+ */
 
 app.post(
   "/users/:Username/movies/:MovieID",
@@ -486,9 +487,14 @@ app.post(
   }
 );
 
-// DELETE
-
-// Allow users to delete a movie to their list of favorites
+/**
+ *
+ * This function allows users to delete a movie to their list of favorites
+ * @method DELETE
+ * @param {string} endpoint - /users/:Username/movies/:MovieID
+ * @param {function} callback - function(req, res)
+ * @returns {object} - JSON object deleted a movie from a user's list of favorites
+ */
 
 app.delete(
   "/users/:Username/movies/:MovieID",
@@ -517,11 +523,13 @@ app.delete(
   }
 );
 
-// DELETE
-
-// Allow existing users to deregister
-
-// Delete a user by username
+/**
+ *
+ * This function allows existing users to deregister
+ * @param {string} endpoint - /users/:Username
+ * @param {function} callback - function(req, res)
+ * @returns {object} - JSON object deleted a user
+ */
 
 app.delete(
   "/users/:Username",
