@@ -216,8 +216,15 @@ app.get(
   }
 );
 
-// Code with validation to allow new users to register
-
+/**
+ *
+ * This function creates a new user
+ *
+ * @method POST
+ * @param {string} endpoint - /users
+ * @param {function} callback - function(req, res)
+ * @returns {object} - JSON object about a user (Username, Password, Email, Birthday)
+ */
 app.post(
   "/users",
   // Validation logic here for request
@@ -376,7 +383,15 @@ app.post(
 //})
 //});
 
-// update user info new with hashPassword & validation
+/**
+ *
+ * This function update user info new with hashPassword & validation
+ *
+ * @method PUT
+ * @param {string} endpoint - /users/:Username
+ * @param {function} callback - function(req, res)
+ * @returns {object} - JSON object about a user (Username, Password, Email, Birthday)
+ */
 
 app.put(
   "/users/:Username",
@@ -435,9 +450,14 @@ app.put(
   }
 );
 
-// create
+/**
+ *
+ * This function Add a movie to a user's list of favorites
+ * @method POST
+ * @param {string} endpoint - /users/:Username/movies/:MovieID
+ * @param {function} callback - function(req, res)
+ * @returns {object} - JSON object 
 
-// Add a movie to a user's list of favorites
 
 app.post(
   "/users/:Username/movies/:MovieID",
